@@ -1,0 +1,174 @@
+package com.DieulDioxe.Spring.model;
+
+import org.hibernate.annotations.NaturalId;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
+public class User{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Size(min=3, max = 50)
+    private String name;
+
+    @NotBlank
+    @Size(min=3, max = 50)
+    private String username;
+
+    @NaturalId
+    @NotBlank
+    @Size(max = 50)
+    @Email
+    private String email;
+
+    @NotBlank
+    @Size(min=6, max = 100)
+    private String password;
+
+
+
+    @NotBlank
+    @Size( max = 25)
+    private String profile;
+
+    @NotBlank
+    @Size( max = 25)
+    private String statut;
+
+    @Column
+    private String imageName;
+
+
+    @Column
+    @Lob
+    private byte[] imageFile;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @JoinColumn(name = "partenaire_id", referencedColumnName = "id")
+    private Partenaire partenaireId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "compte_id", referencedColumnName = "id")
+    private Compte compteId;
+
+    public User() {}
+
+    public User(String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.profile = profile;
+        this.statut = statut;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getProfile() { return profile; }
+
+    public void setProfile(String profile) { this.profile = profile;}
+
+    public String getStatut() { return statut; }
+
+    public void setStatut(String statut) { this.statut = statut; }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Partenaire getPartenaireId() {
+        return partenaireId;
+    }
+
+    public void setPartenaireId(Partenaire partenaireId) {
+        this.partenaireId = partenaireId;
+    }
+
+    public Compte getCompteId() {
+        return compteId;
+    }
+
+    public void setCompteId(Compte compteId) {
+        this.compteId = compteId;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public byte[] getImageFile() {
+        return imageFile;
+    }
+
+    public void setImageFile(byte[] imageFile) {
+        this.imageFile = imageFile;
+    }
+}
