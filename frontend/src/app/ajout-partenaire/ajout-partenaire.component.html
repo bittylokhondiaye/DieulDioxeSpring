@@ -1,0 +1,110 @@
+<div>
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="centrer border" >
+  <div>
+    <h4>Ajouter Un Partenaire</h4>
+    <hr>
+  </div>
+<div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+  <div class="row">
+  <div class="col-md-6"> 
+          <mat-form-field floatLable="auto" appearence="fill">
+            <mat-label>Prenom</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput required  class="form-control" formControlName="Prenom">
+          </mat-form-field>
+  </div>
+  <div class="col-md-6"> 
+      <mat-form-field floatLable="auto" appearence="fill">
+        <mat-label>Nom</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput required  class="form-control" formControlName="Nom">
+      </mat-form-field>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+          <mat-form-field floatLable="auto" appearence="fill">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput required  class="form-control" formControlName="password">
+          </mat-form-field>
+  </div>
+  <div class="col-md-6">
+      <mat-form-field floatLable="auto" appearence="fill">
+        <mat-label>Telephone</mat-label>
+        <mat-icon matPrefix>call</mat-icon>
+        <input matInput required  class="form-control" formControlName="Telephone">
+      </mat-form-field>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>CNI</mat-label>
+      <mat-icon matPrefix>how_to_vote</mat-icon>
+      <input matInput required  class="form-control" formControlName="CNI">
+    </mat-form-field>
+</div>
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>NINEA</mat-label>
+      <mat-icon matPrefix>edit</mat-icon>
+      <input matInput required  class="form-control" formControlName="NINEA">
+    </mat-form-field>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>Adresse</mat-label>
+      <mat-icon matPrefix>house</mat-icon>
+      <input matInput required  class="form-control" formControlName="Adresse">
+    </mat-form-field>
+</div>
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>Raison Social</mat-label>
+      <mat-icon matPrefix>edit</mat-icon>
+      <input matInput required  class="form-control" formControlName="RaisonSocial">
+    </mat-form-field>
+</div>
+
+</div>
+
+
+  <div>
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Email</mat-label>
+    <mat-icon matPrefix>mail</mat-icon>
+    <input matInput required  class="form-control" formControlName="Email">
+  </mat-form-field>
+  </div>
+
+ <!-- <div>
+      <mat-form-field floatLable="auto" appearence="fill">
+        <mat-label>Numero Compte</mat-label>
+        <input matInput required  class="form-control" formControlName="NumeroCompte">
+      </mat-form-field>
+  </div>-->
+  
+  <div >
+     <img [src]="imageurl" alt="" hidden>
+      <input  style="width: 27%" class="form-control" formControlName="imageName" type="file" #ImageName accept="image/*" (change)="handleFileInput($event.target.files)" >
+</div>
+    <div class="example-button-row mt-5"  style="text-align: center">
+      <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Register</button>
+    </div>
+
+  </form>
+</div>
+</div>
+
+
+
+

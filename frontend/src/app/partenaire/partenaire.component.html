@@ -1,0 +1,34 @@
+<div>
+<app-nav-bar></app-nav-bar>
+</div>
+<div class="container mt-5">
+<div  class="table-responsive">
+<table  class="table">
+  <thead class="black white-text">
+    <tr>
+      <th > Prenom </th>
+      <th > Nom </th>
+      <th > Telephone </th>
+      <th > CNI </th>
+      <th > NINEA </th>
+      <th > Adresse </th>
+      <th > Raison Social </th>
+      <th > Email </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let partenaires of partenaire">
+      <td>{{ partenaires.Prenom}}</td>
+      <td>{{ partenaires.Nom }}</td>
+      <td>{{ partenaires.Telephone }}</td>
+      <td>{{ partenaires.CNI }}</td>
+      <td>{{ partenaires.NINEA }}</td>
+      <td>{{ partenaires.Adresse }}</td>
+      <td>{{ partenaires.RaisonSocial }}</td>
+      <td>{{ partenaires.Email }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

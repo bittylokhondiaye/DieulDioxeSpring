@@ -1,6 +1,8 @@
 package com.DieulDioxe.Spring.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -31,7 +33,9 @@ public class Compte {
     @NotNull
     private int Solde;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","partenaireId"})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinColumn(name = "partenaire_id", referencedColumnName = "id")
     private Partenaire partenaireId;
 

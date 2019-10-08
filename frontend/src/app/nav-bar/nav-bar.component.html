@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <header>
+<div>
+<mat-toolbar class="navbar">
+  <div>DieulDioxe</div>
+  <div>
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="isSuperAdmin()" >Partenaire</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item  [routerLink]="['/listerPartenaire']" routerLinkActive="router-link-active" >Lister Parttenaire</button>
+        <button mat-menu-item  [routerLink]="['/ajoutPartenaire']" routerLinkActive="router-link-active" >Ajout Partenaire</button>
+      </mat-menu>
+
+
+      <button mat-button [matMenuTriggerFor]="user"   *ngIf="isSuperAdmin() || isAdmin()">User</button>
+      <mat-menu #user="matMenu">
+          <button mat-menu-item  [routerLink]="['/ajoutUser']" routerLinkActive="router-link-active" *ngIf="isSuperAdmin()">Ajouter User</button>
+          <button mat-menu-item  [routerLink]="['/listerUser']" routerLinkActive="router-link-active" >lister User</button>
+          <button mat-menu-item  [routerLink]="['/ajoutUserPartenaire']" routerLinkActive="router-link-active" *ngIf="isAdmin()">Ajout User Partenaire</button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="compte"   *ngIf="isSuperAdmin() || isCaissier()">Compte</button>
+      <mat-menu #compte="matMenu">
+          <button mat-menu-item  [routerLink]="['/ajoutCompte']" routerLinkActive="router-link-active" *ngIf="isSuperAdmin()">Ajouter Compte</button>
+          <button mat-menu-item  [routerLink]="['/depot']" routerLinkActive="router-link-active" *ngIf="isCaissier()">Depot</button>
+      </mat-menu>
+
+
+
+      <button mat-button [matMenuTriggerFor]="transaction" *ngIf="isUser()">Transaction</button>
+      <mat-menu #transaction="matMenu">
+        <button mat-menu-item  [routerLink]="['/transaction']" routerLinkActive="router-link-active" >faire une transaction</button>
+        <button mat-menu-item   >Lister Transaction</button>
+      </mat-menu>
+
+    <span  (click)="logout()"  [routerLink]="['/login']" class="btn">Logout</span>
+  </div>
+</mat-toolbar>
+</div>
+</header>
+</body>
+</html>
+
+
+
+
+
+
+
+

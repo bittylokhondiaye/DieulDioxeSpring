@@ -1,0 +1,99 @@
+<div>
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="centrer">
+  <div>
+    <h4>Ajouter Un Utilateur</h4>
+    <hr>
+  </div>
+<div>
+  <form [formGroup]="userPartenaireForm" (ngSubmit)="onSubmitForm()">
+  <div class="row">
+  <div class="col-md-6"> 
+          <mat-form-field floatLable="auto" appearence="fill">
+            <mat-label>Prenom</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput required  class="form-control" formControlName="Prenom">
+          </mat-form-field>
+  </div>
+  <div class="col-md-6"> 
+      <mat-form-field floatLable="auto" appearence="fill">
+        <mat-label>Nom</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput required  class="form-control" formControlName="Nom">
+      </mat-form-field>
+  </div>
+</div>
+   
+<div class="row">
+  <div class="col-md-6">
+          <mat-form-field floatLable="auto" appearence="fill">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput required  class="form-control" formControlName="password">
+          </mat-form-field>
+  </div>
+  <div class="col-md-6">
+      <mat-form-field floatLable="auto" appearence="fill">
+        <mat-label>Telephone</mat-label>
+        <mat-icon matPrefix>phone</mat-icon>
+        <input matInput required  class="form-control" formControlName="Telephone">
+      </mat-form-field>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>CNI</mat-label>
+      <mat-icon matPrefix>how_to_vote</mat-icon>
+      <input matInput required  class="form-control" formControlName="CNI">
+    </mat-form-field>
+</div>
+<div class="col-md-6">
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>Login</mat-label>
+      <mat-icon matPrefix>edit</mat-icon>
+      <input matInput required  class="form-control" formControlName="Login">
+    </mat-form-field>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Email</mat-label>
+    <mat-icon matPrefix>mail</mat-icon>
+    <input matInput required  class="form-control" formControlName="Email">
+  </mat-form-field>
+  </div>
+
+  <div class="img col-md-6" >
+    <mat-form-field floatLable="auto" appearence="fill">
+      <mat-label>Compte</mat-label>
+      <mat-icon matPrefix>credit_card</mat-icon>
+      <mat-select class="form-control" formControlName="Compte" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let comptes of compte" value={{comptes.id}}>
+            {{comptes.NumeroCompte}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    </div>
+  </div>
+  
+  <div class="add" style="padding-left: 42%">
+     <img [src]="imageurl" alt="" hidden>
+      <input  style="width: 27%"  class="form-control" formControlName="imageName" type="file" #ImageName accept="image/*" (change)="handleFileInput($event.target.files)"  >
+</div>
+    <div class="example-button-row mt-5">
+      <button mat-raised-button color="primary" type="submit" [disabled]="userPartenaireForm.invalid">Register</button>
+    </div>
+  </form>
+</div>
+</div>
+
+
+
+
+

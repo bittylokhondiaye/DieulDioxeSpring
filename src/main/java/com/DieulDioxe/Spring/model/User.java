@@ -1,5 +1,6 @@
 package com.DieulDioxe.Spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -55,9 +56,11 @@ public class User{
     private String imageName;
 
 
-    @Column
-    @Lob
+
+    @Lob()
     private byte[] imageFile;
+
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -65,10 +68,13 @@ public class User{
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","partenaireId"})
     @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinColumn(name = "partenaire_id", referencedColumnName = "id")
     private Partenaire partenaireId;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","compteId"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "compte_id", referencedColumnName = "id")
     private Compte compteId;

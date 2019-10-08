@@ -33,10 +33,9 @@ public class UserController {
     }
     @Autowired
     PasswordEncoder encoder;
-    @PostMapping(value = "/add",consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(value = "/add",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     @PreAuthorize("hasAuthority('ROLE_SUPER_ADMIN')")
-    public User add(@ModelAttribute User user,@RequestParam("file") MultipartFile imageFile){
-        System.out.println(user.getPassword());
+    public User add( @ModelAttribute User user,@RequestParam("file") MultipartFile imageFile ){
         String password=encoder.encode(user.getPassword());
         user.setPassword(password);
         String profile=user.getProfile();
@@ -46,10 +45,10 @@ public class UserController {
         if(profile.equals("admin")){
               role.setId(1L);
         }
-        else if(profile=="user"){
+        else if(profile.equals("user")){
             role.setId(2L);
         }
-        else if(profile=="caissier"){
+        else if(profile.equals("caissier")){
             role.setId(4L);
         }
         roles.add(role);

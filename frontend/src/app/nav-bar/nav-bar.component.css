@@ -1,0 +1,15 @@
+.navbar{
+    justify-content: space-between;
+    background-color: burlywood
+}
+
+span {
+    padding-right: 1rem;
+}
+
+footer{
+    background-color: burlywood;
+    height:200px;
+    position: relative;
+
+}

@@ -1,0 +1,58 @@
+<div>
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="centrer ">
+  <div>
+    <h4>Ajouter un utilisateur</h4>
+    <hr>
+  </div>
+<div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+  <div class="row">
+  <div class="col-md-6"> 
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Email</mat-label>
+    <mat-icon matPrefix>mail</mat-icon>
+    <input matInput required  class="form-control" formControlName="email">
+  </mat-form-field>
+  </div>
+
+  <div class="col-md-6">
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Password</mat-label>
+    <mat-icon matPrefix>lock</mat-icon>
+    <input matInput required  class="form-control" formControlName="password">
+  </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div  class="col-md-6">
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Profile</mat-label>
+    <mat-icon matPrefix>person</mat-icon>
+    <input matInput required class="form-control" formControlName="Profile">
+  </mat-form-field>
+  </div>
+  <div class="col-md-6">
+  <mat-form-field floatLable="auto" appearence="fill">
+    <mat-label>Statut</mat-label>
+    <mat-icon matPrefix>edit</mat-icon>
+    <input  matInput required class="form-control" formControlName="Statut">
+  </mat-form-field>
+  </div>
+</div>
+  
+  <div style="padding-left: 42%">
+     <img [src]="imageurl" alt=""  hidden>
+      <input    style="width: 27%" class="form-control" formControlName="imageName" type="file" #ImageName accept="image/*" (change)="handleFileInput($event.target.files)" >
+
+   </div>
+    <div class="example-button-row mt-5">
+      <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Register</button>
+    </div>
+  </form>
+</div>
+</div>
+
+
+

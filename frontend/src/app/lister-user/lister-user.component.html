@@ -1,0 +1,32 @@
+<div>
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="container mt-5">
+<div  class="table-responsive">
+  <table  class="table">
+    <thead class="black white-text">
+      <tr>
+        <th > Email </th>
+        <th > Role </th>
+        <th > Date d'update </th>
+        <th > Profile </th>
+        <th > Statut </th>
+        <th >  </th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let users of user">
+        <td>{{ users.email}}</td>
+        <td>{{ users.roles }}</td>
+        <td>{{ users.updatedAt }}</td>
+        <td>{{ users.Profile }}</td>
+        <td>{{ users.Statut }}</td>
+        <td><a><mat-icon (click)="block(users.id)">lock</mat-icon></a></td>
+        <!--<a   ><mat-icon  (click)="unblock(user.Id)">lock_open</mat-icon></a>-->
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
